@@ -14,8 +14,8 @@
         RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="235" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RowDefinition Height="*" />
         <StackLayout
             Grid.Row="0"
             BackgroundColor="#4C4C4C"
