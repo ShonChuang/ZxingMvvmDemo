@@ -9,6 +9,7 @@ using Android.OS;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
 
+[assembly: UsesPermission(Android.Manifest.Permission.Camera)]
 namespace ZxingMvvm.Demo.Droid
 {
     [Activity(Label = "ZxingMvvm.Demo", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -22,6 +23,7 @@ namespace ZxingMvvm.Demo.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             LoadApplication(new App(new AndroidInitializer()));
         }
     }

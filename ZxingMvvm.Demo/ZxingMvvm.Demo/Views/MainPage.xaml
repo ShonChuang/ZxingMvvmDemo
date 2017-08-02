@@ -1,11 +1,151 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ZxingMvvm.Demo.Views.MainPage"
-             Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+<ContentPage
+    x:Class="ZxingMvvm.Demo.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    xmlns:ZxingCommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="編輯顧客資料"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <Grid
+        Margin="0"
+        ColumnSpacing="0"
+        RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="235" />
+        </Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <StackLayout
+            Grid.Row="0"
+            BackgroundColor="#4C4C4C"
+            HorizontalOptions="Fill"
+            Spacing="0"
+            VerticalOptions="Fill">
+            <Zxing:ZXingScannerView
+                HorizontalOptions="FillAndExpand"
+                IsAnalyzing="{Binding IsAnalyzing}"
+                IsScanning="{Binding IsScanning}"
+                IsVisible="{Binding IsVisible}"
+                Result="{Binding Result, Mode=TwoWay}"
+                ScanResultCommand="{Binding ScanResultCommand}"
+                VerticalOptions="FillAndExpand" />
+
+        </StackLayout>
+        <Grid
+            Grid.Row="1"
+            Margin="20,0,20,0"
+            ColumnSpacing="0"
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Button
+                    Margin="0,0,3,0"
+                    BackgroundColor="#D3D3D3"
+                    Command="{Binding QRCodeScannerCommand}"
+                    HeightRequest="50"
+                    Text="QRCode"
+                    TextColor="White"
+                    WidthRequest="160" />
+                <Button
+                    Margin="3,0,0,0"
+                    BackgroundColor="#0056A8"
+                    Command="{Binding BarCodeScannerCommand}"
+                    HeightRequest="50"
+                    Text="BarCode"
+                    TextColor="White"
+                    WidthRequest="160" />
+            </StackLayout>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Text="機種"
+                VerticalOptions="Center" />
+            <Entry
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Placeholder="請輸入機種"
+                Text="{Binding MODEL}"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Text="機號"
+                VerticalOptions="Center" />
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Placeholder="請輸入機種"
+                Text="{Binding MODELID}"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Text="銷售傳票"
+                VerticalOptions="Center" />
+            <Entry
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Placeholder="請輸入機種"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Text="顧客同意註冊"
+                VerticalOptions="Center" />
+            <Entry
+                Grid.Row="4"
+                Grid.Column="1"
+                Margin="0"
+                HorizontalOptions="Fill"
+                Placeholder="請輸入機種"
+                VerticalOptions="Center" />
+
+            <Button
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#0056A8"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                Text="完成"
+                TextColor="White"
+                VerticalOptions="Center" />
+
+        </Grid>
+    </Grid>
 </ContentPage>
