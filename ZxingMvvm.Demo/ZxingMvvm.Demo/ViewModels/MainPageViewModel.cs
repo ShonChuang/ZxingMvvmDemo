@@ -89,6 +89,7 @@ namespace ZxingMvvm.Demo.ViewModels
         }
         #endregion
 
+        public int MyProperty { get; set; }
         public DelegateCommand QRCodeScannerCommand { get; set; }
         public DelegateCommand BarCodeScannerCommand { get; set; }
 
@@ -117,16 +118,17 @@ namespace ZxingMvvm.Demo.ViewModels
         {
             //throw new NotImplementedException();
             this.IsVisible = false;
-            this.IsScanning = false;
+            //this.IsScanning = false;
             this.IsAnalyzing = false;
-            if (string.IsNullOrEmpty(this.MODEL))
+            if (this.MyProperty == 1)
             {
                 this.MODEL = Result.Text;
             }
-            else
+            else 
             {
                 this.MODELID = Result.Text;
             }
+
         }
 
         private void BarCodeScanner()
@@ -135,6 +137,7 @@ namespace ZxingMvvm.Demo.ViewModels
             this.IsVisible = true;
             this.IsScanning = true;
             this.IsAnalyzing = true;
+            this.MyProperty = 2;
         }
 
         private void QRCodeScanner()
@@ -142,8 +145,8 @@ namespace ZxingMvvm.Demo.ViewModels
             this.IsVisible = true;
             this.IsScanning = true;
             this.IsAnalyzing = true;
+            this.MyProperty = 1;
 
-           
         }
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -157,7 +160,7 @@ namespace ZxingMvvm.Demo.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            
+
         }
     }
 }

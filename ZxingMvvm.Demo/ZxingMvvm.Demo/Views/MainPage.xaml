@@ -22,15 +22,22 @@
             HorizontalOptions="Fill"
             Spacing="0"
             VerticalOptions="Fill">
-            <Zxing:ZXingScannerView
+            <Grid
+                Margin="0"
+                ColumnSpacing="0"
                 HorizontalOptions="FillAndExpand"
-                IsAnalyzing="{Binding IsAnalyzing}"
-                IsScanning="{Binding IsScanning}"
                 IsVisible="{Binding IsVisible}"
-                Result="{Binding Result, Mode=TwoWay}"
-                ScanResultCommand="{Binding ScanResultCommand}"
-                VerticalOptions="FillAndExpand" />
-
+                RowSpacing="0"
+                VerticalOptions="FillAndExpand">
+                <Zxing:ZXingScannerView
+                    HorizontalOptions="Center"
+                    IsAnalyzing="{Binding IsAnalyzing}"
+                    IsScanning="{Binding IsScanning}"
+                    Result="{Binding Result, Mode=TwoWay}"
+                    ScanResultCommand="{Binding ScanResultCommand}"
+                    VerticalOptions="Center" />
+                <Zxing:ZXingDefaultOverlay Opacity="0.9" ShowFlashButton="False" />
+            </Grid>
         </StackLayout>
         <Grid
             Grid.Row="1"
